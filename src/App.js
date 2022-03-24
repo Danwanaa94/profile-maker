@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import ProfileForm from './components/ProfileForm'
+import ProfileCard from './components/ProfileCard'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const[allProfiles, setAllprofiles]=useState([
+{
+firstname:"Ama",
+lastname:"Mensah",
+email:"mensah@gmail.com",
+phone:"0206532345"
 }
 
-export default App;
+])
+
+const updateprofiles = (profile)=>{
+let arr = allProfiles;
+arr.push(profile)
+setAllprofiles([...arr]);
+
+};
+
+  return (
+    <div className='app'>
+      <h1>Profile Maker</h1>
+      <div>
+    <ProfileForm submit={updateprofiles}/>
+    <hr/>
+    <div className='list'>
+     {allProfiles.map((person,index)=>(
+       <ProfileCard key={index} card={person}/>
+     ))}
+
+    </div>
+    </div>
+    </div>
+  )
+}
+
+export default App
