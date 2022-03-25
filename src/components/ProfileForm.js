@@ -36,7 +36,7 @@ const handleForm =(e)=>{
 
     <label>
     Last Name
-    <input name="lastame" value={profile.lastname} type="text" onChange={handler}/>
+    <input name="lastname" value={profile.lastname} type="text" onChange={handler}/>
     </label>
     </div>
 
